@@ -1,7 +1,11 @@
 
-## Workshop Title
+## Workshop Variant
 
-Welcome to our workshop! In this workshop we'll be using foo to accomplish bar. The goals of this workshop are:
+**IMPORTANT NOTE ABOUT VARIANTS**
+
+> This is a workshop variant. A variant is based off of a github branch. Use variants when you want to make small customizations to a specific workshop, like removing a step, or tailoring some data to a specific audience.
+
+The goals of the workshop are:
 
 * Goals!
 * Have fun!
