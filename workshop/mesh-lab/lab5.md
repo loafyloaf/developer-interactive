@@ -119,12 +119,13 @@ oc apply -f bank-istio-policy.yaml -f bank-istio-destination-mtls.yaml
 
 Enable knative-serving with Istio.
 
-```./label-knative.sh```
+```
+./label-knative.sh
+```
 
 This sets the appropriate labels in the `knative-serving` namespace allowing the knative service to be triggered.
 
-Redeploy the knative service with the Istio sidecar
-annotation.
+Redeploy the knative service with the Istio sidecar annotation.
 
 ```
 oc apply -f bank-knative-service/network.yaml
