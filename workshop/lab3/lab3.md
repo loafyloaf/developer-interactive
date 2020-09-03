@@ -1,6 +1,9 @@
 
 ![Example Bank diagram](images/pattern-flow-diag.png)
 
+
+# Part 1
+
 The back end of Example Bank is what this tutorial deploys through a pipeline. It consists of several microservices, including two Java services to process transactions and users respectively, a Node.js front end, and a PostgreSQL instance to keep track of it all.
 
 ### 0.
@@ -64,7 +67,8 @@ Deploy microservices:
    docker login
    docker push <all images>
 ```
----- break here - handoff to second person ----
+
+# Part 2
 
 2. Update YAML deployment manifests to point at correct images - five files.
 
