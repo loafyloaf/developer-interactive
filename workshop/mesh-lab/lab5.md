@@ -9,7 +9,7 @@ Login and checkout Example Bank github repo.
 
 ```
 oc login
-ibmcloud login -u koyfman@gmail.com
+ibmcloud login -u <account name>
 git clone https://github.com/IBM/example-bank.git
 oc new-project example-bank
 ```
