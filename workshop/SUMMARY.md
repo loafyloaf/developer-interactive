@@ -13,6 +13,7 @@
 * [Lecture](some-section/README.md)
     * [Threat Modeling](appid/threat-modeling.md)
     * [Identity Management](appid/identity-management.md)
+    * [Prerequisites](appid/prerequisites.md)
 * [Lab](some-section/README.md)
     * [Creating App ID in IBM Cloud](appid/creating-app-id.md)
     * [Building the front end service](appid/building-front-end.md)
