@@ -2,7 +2,7 @@
 
 ## Verify deployment file
 
-Open **deployment.yaml** file in the root folder
+Open **deployment.yaml** file in the root folder. Change the configuration to use the image you just built.
 
 ```yaml
 containers:
@@ -11,11 +11,15 @@ containers:
 
 ## Deploy to OpenShift
 
+To deploy, you can use `oc apply` with the deployment file.
+
 ```bash
 $ oc apply -f deployment.yaml
 ```
 
 ## Check status
+
+Check the status of the pods. Make sure the status is **Running**. You can also check its logs using `oc logs <podname>`
 
 ```bash
 $ oc get pods
