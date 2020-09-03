@@ -11,14 +11,13 @@
 ### Threat Modeling & Identity Management
 
 * [Lecture](some-section/README.md)
-    * [Some Exercise](some-exercise/README.md)
+    * [Threat Modeling](appid/threat-modeling.md)
+    * [Identity Management](appid/identity-management.md)
 * [Lab](some-section/README.md)
     * [Creating App ID in IBM Cloud](appid/creating-app-id.md)
     * [Building the front end service](appid/building-front-end.md)
-    * [Configure Deployment file](appid/configure-deployment-file.md)
     * [Deploying to OpenShift](appid/deploying-to-openshift.md)
     * [Test the Simulator](appid/test-the-simulator.md)
-    * [Conclusion](appid/conclusion.md)
 
 
 ### Operator Workshop
