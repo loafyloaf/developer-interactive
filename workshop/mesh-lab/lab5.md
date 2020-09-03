@@ -1,7 +1,9 @@
 
-![Example Bank diagram](../images/pattern-flow-diag.png)
+# OpenShift Service Mesh for Example Bank
 
-# Part 1: Deploy Example Bank
+![Example Bank diagram](arch.png)
+
+## Part 1: Deploy Example Bank
 
 Login and checkout Example Bank github repo.
 
@@ -19,18 +21,17 @@ cd example-bank/scripts/
 ./installServerlessOperator.sh
 ```
 
-Deploy microservices.
+Deploy front end service and SQL data schema.
 
 ```
 oc apply -f deployment.yaml
 oc apply -f data_model/job.yaml
 ```
--- wait --
 
 Verify schema loaded to ensure the database is ready to use.
 
 ```
-oc logs cc-schema-load-zs6md
+oc logs cc-schema-load-<pod>
 ```
 
 Deploy back-end services:
@@ -68,19 +69,26 @@ Open up the OpenShift console, navigate to the the OperatorHub, install operator
  3. Kiali
  4. Service Mesh Operator
 
-Create project called `istio-system`.
+Create a new project called `istio-system`.
 
 Go to installed operators, and wait until they become available in this namespace.
 
 While waiting, check out the `service-mesh` branch:
 
-Control Plane
-ServiceMeshMemberRolls
-Verify install: oc get smmr -o yaml --all-namespaces | egrep -A2 'ControlPlane|configuredMembers'
-
 ```
 git checkout service-mesh
 ````
+
+### Next steps:
+
+- Create Control Plane instance.
+
+- Create ServiceMeshMemberRolls
+
+Verify install: 
+
+```oc get smmr -o yaml --all-namespaces | egrep -A2 'ControlPlane|configuredMembers'```
+
 
 Open up a second terminal to watch pods: `watch -n1 oc get pods`
 
@@ -109,29 +117,35 @@ Force mTLS between database and other services:
 oc apply -f bank-istio-policy.yaml -f bank-istio-destination-mtls.yaml
 ```
 
-> Enable knative with mesh
+Enable knative-serving with Istio.
 
-./label-knative.sh
-   > oc label namespace knative-serving serving.knative.openshift.io/system-namespace=true --overwrite
-   > oc label namespace knative-serving-ingress serving.knative.openshift.io/system-namespace=true --overwrite
+```./label-knative.sh```
 
+This sets the appropriate labels in the `knative-serving` namespace allowing the knative service to be triggered.
+
+Redeploy the knative service with the Istio sidecar
+annotation.
+
+```
 oc apply -f bank-knative-service/network.yaml
 oc apply -f bank-knative-service/deployment.yaml
-
+```
 
 >  We are updating the cleanup utility because we need to send a signal to the Envoy sidecar to exit after the job completes.
 
+```
 oc delete -f bank-user-cleanup-utility/job.yaml
 oc apply -f bank-user-cleanup-utility/job.yaml
+```
 
-> Expose access via openshift route. Go to istio-system namespace in Admin console.
+> Expose access via OpenShift secured route. Go to istio-system namespace in Admin console.
 
-port 80 -> 8080, Edge, Redirect.  Default OpenShift certs can be used, or you can upload your own.
+Set port 80 -> 8080, Edge, Redirect.  Default OpenShift certs can be used, or you can upload your own certificates.
 
 > Click on URL, e.g. https://example-bank-istio-system.first-test-cluster-f8c169e6934c89d328b2b987ec7f7018-0000.us-south.containers.appdomain.cloud/
 
 > Click on "Padlock" to examine certs.
 
-> Buy groceries. Note that all relevant pods have extra container.
+> Use bank simulator. Note that all relevant pods have extra container.
 
 > Open up Kiali from App square to view traffic flow.
