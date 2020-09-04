@@ -33,12 +33,10 @@
 ### Microservice Workshop
 
 * [Lecture](some-section/README.md)
-    * [Some Exercise](some-exercise/README.md)
+    * [Prerequisites](microservices/prerequisites.md)
 * [Lab](some-section/README.md)
-    * [Introduction](lab3/intro.md)
-    * [Lab 3](lab3/lab3.md)
-    * [Tasks](lab3/tasks.md)
-    * [Tooling](lab3/tooling.md)
+    * [Part 1](microservices/part1.md)
+    * [part 2](microservices/part2.md)
 
 ### Serverless Workshop
 
