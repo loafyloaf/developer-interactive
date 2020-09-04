@@ -16,6 +16,7 @@ The simulator will get stuck in the "Creating user profile..." loading screen. T
 
 ## Summary
 
+* Learned about Threat Modelling
 * Explored App ID
 * Built and Deploy Node.js microservice in OpenShift
 
