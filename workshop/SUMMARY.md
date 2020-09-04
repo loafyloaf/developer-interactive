@@ -36,7 +36,7 @@
     * [Prerequisites](microservices/prerequisites.md)
 * [Lab](some-section/README.md)
     * [Part 1](microservices/part1.md)
-    * [part 2](microservices/part2.md)
+    * [Part 2](microservices/part2.md)
 
 ### Serverless Workshop
 
