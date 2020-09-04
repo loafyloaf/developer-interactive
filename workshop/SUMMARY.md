@@ -15,6 +15,7 @@
     * [Identity Management](appid/identity-management.md)
     * [Prerequisites](appid/prerequisites.md)
 * [Lab](some-section/README.md)
+    * [Clone the repo](appid/clone-the-repo.md)
     * [Creating App ID in IBM Cloud](appid/creating-app-id.md)
     * [Building the front end service](appid/building-front-end.md)
     * [Deploying to OpenShift](appid/deploying-to-openshift.md)

@@ -26,12 +26,14 @@ Create one with a name of **appid-example-bank** using the IBM Cloud dashboard h
 
 ![service-scredentials](../.gitbook/generic/appid-writer.png)
 
+## 3. Create secrets
+
 * Create secrets of App ID credentials for OpenShift cluster
 
 You can use this script to create the secrets in your OpenShift cluster. This grabs your App ID instance named `appid-example-bank` and service credentials named `appid-example-bank-credentials`
 
 ```
-$ ./mapAppIDtoSecrets.sh
+$ ./scripts/mapAppIDtoSecrets.sh
 
 secret/bank-oidc-secret created
 secret/bank-appid-secret created
