@@ -83,6 +83,7 @@ First, you can build the schema and database model loader.
 
 ```
 ## make sure your are in the root directory of the example-bank repo
+$ export DOCKER_HUB_USER=your-dockerhub-username
 $ docker build -t $DOCKER_HUB_USER/lab-data:1.0 data_model
 ```
 
