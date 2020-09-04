@@ -12,6 +12,8 @@ Open the URL and open the console in the developer tools of your browser to view
 
 The simulator will get stuck in the "Creating user profile..." loading screen. This is expected for now as you haven't deployed the other microservices of the Example Bank application.
 
+You can also go back to your IBM Cloud App ID dashboard to view and manage the users that have been created.
+
 ![](../.gitbook/generic/simulator-lab1.png)
 
 ## Summary
