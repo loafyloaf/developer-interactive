@@ -14,3 +14,13 @@ The simulator will get stuck in the "Creating user profile..." loading screen. T
 
 ![](../.gitbook/generic/simulator-lab1.png)
 
+## Summary
+
+* Explored App ID
+* Built and Deploy Node.js microservice in OpenShift
+
+![Example Bank App Architecture](../.gitbook/generic/image%20%281%29.png)
+
+Source code: [https://github.com/IBM/example-bank](https://github.com/IBM/example-bank)
+
+More ways to use App ID https://cloud.ibm.com/docs/appid?topic=appid-adding-overview
