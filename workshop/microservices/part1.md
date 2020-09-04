@@ -1,7 +1,7 @@
 # Part 1
 
-1. [Quickly install previous workshops](#1-Quickly-install-previous-workshops)
-1. [Build Java microservices](#2-Build-Java-microservices)
+1. [Quickly install previous workshops](#1-quickly-install-previous-workshops)
+1. [Build Java microservices](#2-build-java-microservices)
 
 ## 1. Quickly install previous workshops
 
