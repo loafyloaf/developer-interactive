@@ -11,9 +11,15 @@
 ### Threat Modeling & Identity Management
 
 * [Lecture](some-section/README.md)
-    * [Some Exercise](some-exercise/README.md)
+    * [Threat Modeling](appid/threat-modeling.md)
+    * [Identity Management](appid/identity-management.md)
+    * [Prerequisites](appid/prerequisites.md)
 * [Lab](some-section/README.md)
-    * [Lab 1](some-exercise/README.md)
+    * [Clone the repo](appid/clone-the-repo.md)
+    * [Creating App ID in IBM Cloud](appid/creating-app-id.md)
+    * [Building the front end service](appid/building-front-end.md)
+    * [Deploying to OpenShift](appid/deploying-to-openshift.md)
+    * [Test the Simulator](appid/test-the-simulator.md)
 
 
 ### Operator Workshop
@@ -27,12 +33,11 @@
 ### Microservice Workshop
 
 * [Lecture](some-section/README.md)
-    * [Some Exercise](some-exercise/README.md)
+    * [Introduction](microservices/introduction.md)
+    * [Prerequisites](microservices/prerequisites.md)
 * [Lab](some-section/README.md)
-    * [Introduction](lab3/intro.md)
-    * [Lab 3](lab3/lab3.md)
-    * [Tasks](lab3/tasks.md)
-    * [Tooling](lab3/tooling.md)
+    * [Part 1](microservices/part1.md)
+    * [Part 2](microservices/part2.md)
 
 ### Serverless Workshop
 
