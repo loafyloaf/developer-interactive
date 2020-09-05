@@ -1,24 +1,37 @@
 # Part 2
 
-2. Update YAML deployment manifests to point at correct images - five files.
+In this 
 
-3. Run database schema job.
+> Update YAML deployment manifests to point at correct images:
+
+
+```
+1. data_model/job.yaml => anthonyamanse/lab-data:1.0
+
+2. bank-app-backend/transaction-service/deployment.yaml ==> anthonyamanse/lab-transaction:1.0
+
+3. bank-app-backend/user-service/deployment.yaml ==> anthonyamanse/lab-user:1.0
+
+4. bank-user-cleanup-utility/job.yaml ==> anthonyamanse/lab-erasure:1.0
+```
+
+* Note: The mobile simulator is already deployed.
+
+> Run database schema job.
+
 ```
     cd data_model
     oc apply -f job.yaml
 ```
 
-Output: 
+> Verify that the database schema load succeeded.
+
 ```
-theia@theiadocker-koyfman1:/home/project/example-bank/data_model$ oc get pods
-NAME                                   READY   STATUS              RESTARTS   AGE
-cc-schema-load-9tz6f                   0/1     ContainerCreating   0          5s
-creditdb-77c6b6785d-vnxtv              1/1     Running             1          98m
-postgresql-operator-58cb79c899-69qpn   1/1     Running             0          98m
-theia@theiadocker-koyfman1:/home/project/example-bank/data_model$ oc get pods
-NAME                                   READY   STATUS      RESTARTS   AGE
-cc-schema-load-9tz6f                   0/1     Completed   0          42s
-creditdb-77c6b6785d-vnxtv              1/1     Running     1          99m
+theia@theiadocker-koyfman1:/home/project/example-bank/data_model$ oc logs cc-schema-load-<pod name>
+```
+
+Output will resemble:
+```
 postgresql-operator-58cb79c899-69qpn   1/1     Running     0          99m
 theia@theiadocker-koyfman1:/home/project/example-bank/data_model$ oc logs cc-schema-load-9tz6f
 CREATE EXTENSION
@@ -31,17 +44,20 @@ CREATE TABLE
 CREATE TABLE
 CREATE TABLE
 ```
+
+> Now, we can deploy the services:
 ```
- oc apply -f deployment.yaml -f bank-app-backend/user-service/deployment.yaml -f bank-app-backend/transaction-service/deployment.yaml 
+oc apply -f bank-app-backend/user-service/deployment.yaml -f bank-app-backend/transaction-service/deployment.yaml -f bank-user-cleanup-utility/job.yaml
 ```
+
+> Wait until deployments are complete.
 
 Find route to access simulator:
 
 ```
-theia@theiadocker-koyfman1:/home/project/example-bank$ oc get routes
-NAME                       HOST/PORT                                                                                                                          PATH   SERVICES                   PORT    TERMINATION   WILDCARD
-mobile-simulator-service   mobile-simulator-service-example-bank.koyfman-os44-aug5-f2c6cdc6801be85fd188b09d006f13e3-0000.us-east.containers.appdomain.cloud 
+theia@theiadocker-koyfman1:/home/project/example-bank$ oc get routes | grep simulator
 ```
 
-## Summary
+Now, let's take a look at data erasure using a Kubernets CronJob. For this experiment, we're going to modify the erasure service to run once every minute, and show what happens when a user requests deletion.
 
+Modify `bank-user-cleanup-utility/job.yaml` and replace `schedule: "@hourly"` with `schedule: "* * * * *"`, and let's verify that users are deleted.
