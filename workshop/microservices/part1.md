@@ -102,7 +102,7 @@ Then, build the erasure service
 ```
 $ cd ../bank-user-cleanup-utility
 $ mvn package
-$ docker build -t $DOCKER_HUB_USER/lab-erasure:1.0 bank-user-cleanup-utility
+$ docker build -t $DOCKER_HUB_USER/lab-erasure:1.0 .
 ```
 
 You can now push the container images you built 
