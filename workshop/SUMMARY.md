@@ -33,6 +33,7 @@
 ### Microservice Workshop
 
 * [Lecture](some-section/README.md)
+    * [Introduction](microservices/introduction.md)
     * [Prerequisites](microservices/prerequisites.md)
 * [Lab](some-section/README.md)
     * [Part 1](microservices/part1.md)
