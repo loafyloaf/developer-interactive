@@ -15,6 +15,23 @@ Log in to your IBM Cloud account and navigate to the overview page for your Open
 oc login https://c100-e.us-east.containers.cloud.ibm.com:XXXXX --token=XXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
+Login and checkout Example Bank github repo.
+
+```
+oc login
+ibmcloud login -u <account name>
+git clone https://github.com/IBM/example-bank.git
+oc new-project example-bank
+```
+
+```
+cd example-bank/scripts/
+./createappid.sh
+./deploy-db.sh
+```
+
+
+
 ### 2. Install Tekton
 
 Next up, Tekton installation.  From the navigation menu on the left of your OpenShift web console, select **Operators** --> **Operators Hub** and then search for the **OpenShift Pipelines Operator**.  Click on the tile and then the subsiquent **Install** button.  Keep the default settings on the **Create Operator Subscription** page and click **Subscribe**.
