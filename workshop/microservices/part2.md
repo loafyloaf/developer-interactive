@@ -57,7 +57,3 @@ Find route to access simulator:
 ```
 theia@theiadocker-koyfman1:/home/project/example-bank$ oc get routes | grep simulator
 ```
-
-Now, let's take a look at data erasure using a Kubernets CronJob. For this experiment, we're going to modify the erasure service to run once every minute, and show what happens when a user requests deletion.
-
-Modify `bank-user-cleanup-utility/job.yaml` and replace `schedule: "@hourly"` with `schedule: "* * * * *"`, and let's verify that users are deleted.
