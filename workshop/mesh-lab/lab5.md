@@ -64,10 +64,12 @@ Visit URL for the mobile simulator route.
 
 Open up the OpenShift console, navigate to the the OperatorHub, install operators in this order:
 
- 1. Elastic Search (choose version 4.3)
+ 1. Elastic Search (choose version 4.3, which is an option after selecting "Install")
  2. Jaeger Operator
  3. Kiali
  4. Service Mesh Operator
+
+* Note: Select Red Hat and not Community operators for the above.
 
 Create a new project called `istio-system`.
 
@@ -89,13 +91,22 @@ Verify install:
 
 ```oc get smmr -o yaml --all-namespaces | egrep -A2 'ControlPlane|configuredMembers'```
 
+* Note: Do not proceed to next step until you see this in the output:
+
+```
+configuredMembers:
+- example-bank
+```
+
+
 
 Open up a second terminal to watch pods: `watch -n1 oc get pods`
 
 Deploy with sidecar enabled:
 
 ```
-oc apply -f bank-app-backend/user-service/deployment.yaml -f bank-app-backend/transaction-service/deployment.yaml -f deployment.yaml
+oc apply -f deployment.yaml
+oc apply -f bank-app-backend/user-service/deployment.yaml -f bank-app-backend/transaction-service/deployment.yaml
 ```
 
 Patch database pod to inject the Istio sidecar.
@@ -139,7 +150,7 @@ oc delete -f bank-user-cleanup-utility/job.yaml
 oc apply -f bank-user-cleanup-utility/job.yaml
 ```
 
-> Expose access via OpenShift secured route. Go to istio-system namespace in Admin console.
+> Expose access via OpenShift secured route. Go to istio-system namespace in Admin console, then Networking->Routes->Create Route. 
 
 Set port 80 -> 8080, Edge, Redirect.  Default OpenShift certs can be used, or you can upload your own certificates.
 
